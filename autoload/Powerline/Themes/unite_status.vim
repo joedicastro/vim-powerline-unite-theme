@@ -116,8 +116,10 @@ let g:Powerline#Themes#unite_status#theme = Pl#Theme#Create(
 	\
 	\ Pl#Theme#Buffer('unite', ['match', 'any', [Pl#Match#Add('&ft', 'unite')]]
 		\ , ['static_str.name', 'Unite']
-		\ , ['raw.source', '%{split(unite#get_status_string(), "(")[0]}']
-		\ , ['raw.counter', '%{split(split(unite#get_status_string(), "(")[1], ")")[0]}']
+		\ , ['raw.source', '%{get(split(unite#get_status_string(),
+            \ "("), 0, "")}']
+		\ , ['raw.counter', '%{get(split(get(split(unite#get_status_string(),
+            \ "("), 1, ""), ")"), 0, "")}']
 		\ , ['static_str.mode', '●']
 		\ , Pl#Segment#Truncate()
 		\ , Pl#Segment#Split()
